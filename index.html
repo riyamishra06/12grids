@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneStop NDT</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        .success-message {
+            display: none;
+            animation: fadeOut 5s forwards;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .service-card {
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .map-container {
+            background-color: #1a237e;
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="p-4">
+        <div class="container mx-auto">
+            <img src="whiteLOGO 2.png" alt="OneStop NDT Logo" class="h-12">
+        </div>
+    </header>
+
+    <!-- Contact Form Section -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="bg-white rounded-lg shadow-lg p-8 max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-2">Got any questions?</h2>
+                <p class="text-gray-600 mb-8">Let's discuss it over a cup of coffee.</p>
+
+                <form id="contactForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <input type="text" name="name" placeholder="Name"
+                                class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <span class="text-red-500 text-sm hidden" id="nameError"></span>
+                        </div>
+                        <div>
+                            <input type="text" name="organization" placeholder="Organisation Name"
+                                class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <span class="text-red-500 text-sm hidden" id="orgError"></span>
+                        </div>
+                        <div>
+                            <input type="email" name="email" placeholder="Email ID"
+                                class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <span class="text-red-500 text-sm hidden" id="emailError"></span>
+                        </div>
+                        <div>
+                            <input type="tel" name="phone" placeholder="Contact Number"
+                                class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <span class="text-red-500 text-sm hidden" id="phoneError"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <textarea name="message" placeholder="Message" rows="4"
+                            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        <span class="text-red-500 text-sm hidden" id="messageError"></span>
+                    </div>
+                    <div class="text-right">
+                        <button type="submit"
+                            class="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition-colors">
+                            Submit →
+                        </button>
+                    </div>
+                </form>
+
+                <div id="successMessage" class="success-message mt-4 p-4 bg-green-100 text-green-700 rounded-md">
+                    Your message has been sent successfully!
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+<!-- Map Section -->
+<section class="py-12 bg-gray-100">
+    <div class="container mx-auto px-0 w-full">
+        <div class="relative w-full h-full">
+            <!-- Map Container -->
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.1845600723136!2d73.00443887497917!3d19.143396882075074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7bfeb4288ae8d%3A0x8b330290504e58fa!2z4KSy4KWH4KSc4KSwIOCkn-Clh-CkleCljeCkqOCli-CksuClieCknOClgOCknCDgpKrgpYDgpLXgpYDgpJ_gpYAg4KSP4KSy4KSf4KWA4KSh4KWA!5e0!3m2!1shi!2sin!4v1731137152390!5m2!1shi!2sin" 
+                width="100%" 
+                height="450" 
+                style="border:0;" 
+                class="rounded-lg"
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+
+            <!-- Info Box Overlay -->
+            <div class="absolute top-2 left-2 bg-blue-600 text-white p-6 rounded-lg shadow-lg" style="max-width: 320px;">
+                <h3 class="text-2xl font-bold mb-3">OnestopNDT</h3>
+                <p class="mb-3 text-sm leading-relaxed">
+                    PAP/R/406 Rabale MIDC Near Dol Electric<br>
+                    Company Rabale MIDC, Navi Mumbai - 400701.
+                </p>
+                <p class="mb-3 text-sm">Landline : 022 4131 0099</p>
+                <a href="#" class="inline-flex items-center text-white hover:text-blue-200 text-sm">
+                    <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C7.802 0 4 3.403 4 7.602C4 11.8 7.469 16.812 12 24C16.531 16.812 20 11.8 20 7.602C20 3.403 16.199 0 12 0ZM12 11C10.343 11 9 9.657 9 8C9 6.343 10.343 5 12 5C13.657 5 15 6.343 15 8C15 9.657 13.657 11 12 11Z"/>
+                    </svg>
+                    Google Map Link
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+    <!-- Services Grid -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <a href="#" class="service-card block">
+                    <div class="bg-blue-900 aspect-square rounded-lg overflow-hidden relative">
+                        <img src="Frame 1951.png" alt="Companies" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 p-4">
+
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="service-card block">
+                    <div class="bg-blue-900 aspect-square rounded-lg overflow-hidden relative">
+                        <img src="Frame 1957.png" alt="Jobs" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 p-4">
+
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="service-card block">
+                    <div class="bg-blue-900 aspect-square rounded-lg overflow-hidden relative">
+                        <img src="Frame 1958.png" alt="Articles" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 p-4">
+
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="service-card block">
+                    <div class="bg-blue-900 aspect-square rounded-lg overflow-hidden relative">
+                        <img src="Frame 1959.png" alt="Webinars" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 p-4">
+
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="service-card block">
+                    <div class="bg-blue-900 aspect-square rounded-lg overflow-hidden relative">
+                        <img src="Frame 1960.png" alt="Forums" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 p-4">
+
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="service-card block">
+                    <div class="bg-blue-900 aspect-square rounded-lg overflow-hidden relative">
+                        <img src="Frame 1961.png" alt="Application Notes" class="w-full h-full object-cover">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 p-4">
+
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 py-8">
+        <div class="container mx-auto px-4">
+            <div class="text-white flex items-center justify-between">
+
+                <img src="Frame 1000003314.png" alt="OneStop NDT Logo" class="h-16 ml-auto">
+            </div>
+            <hr class="my-4 border-white">
+            <h4 class="text-xl text-white font-bold mb-4">What is One Stop NDT?</h4>
+        </div>
+    </footer>
+
+
+
+    <!-- Google Maps Script -->
+    <script>
+        function initMap() {
+            const location = { lat: 19.1367, lng: 73.0068 }; // Rabale MIDC coordinates
+            const map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: location,
+            });
+            const marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                title: 'OneStop NDT'
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+
+    <!-- Form Validation Script -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Reset errors
+            document.querySelectorAll('.text-red-500').forEach(el => el.classList.add('hidden'));
+
+            // Get form values
+            const name = document.querySelector('input[name="name"]').value;
+            const organization = document.querySelector('input[name="organization"]').value;
+            const email = document.querySelector('input[name="email"]').value;
+            const phone = document.querySelector('input[name="phone"]').value;
+            const message = document.querySelector('textarea[name="message"]').value;
+
+            // Validate
+            let isValid = true;
+
+            if (!name) {
+                document.getElementById('nameError').textContent = 'Name is required';
+                document.getElementById('nameError').classList.remove('hidden');
+                isValid = false;
+            }
+
+            if (!email) {
+                document.getElementById('emailError').textContent = 'Email is required';
+                document.getElementById('emailError').classList.remove('hidden');
+                isValid = false;
+            } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+                document.getElementById('emailError').textContent = 'Invalid email format';
+                document.getElementById('emailError').classList.remove('hidden');
+                isValid = false;
+            }
+
+            if (!phone) {
+                document.getElementById('phoneError').textContent = 'Phone number is required';
+                document.getElementById('phoneError').classList.remove('hidden');
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Show success message
+                const successMessage = document.getElementById('successMessage');
+                successMessage.style.display = 'block';
+
+                // Clear form
+                this.reset();
+
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
+            }
+        });
+    </script>
+</body>
+
+</html>
